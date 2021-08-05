@@ -1,0 +1,54 @@
+body {
+  /* height: 650px; */
+  color: #212121;
+  background-color: #eaf6f6;
+  font-family: "游ゴシック";
+  /* background-color: red; */
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #212121;
+}
+li {
+  list-style: none;
+}
+.hidden {
+  display: none;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.app-name {
+  text-align: center;
+}
+.login-form {
+  margin: 50px auto 0 auto;
+  padding: 40px;
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+}
+.input-form {
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.login-button {
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  padding: 2px;
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+  color: black;
+  background-color: #fcfefe;
+}
+.login-button:hover {
+  border-color: black;
+}
