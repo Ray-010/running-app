@@ -31,11 +31,19 @@
         </div>
         <div class="timer-child">
           <h3>Timer</h3>
-          <p id="timer" class=""></p>
+          <p>
+            <span id="hour_timer">00</span>：
+            <span id="min_timer">00</span>：
+            <span id="sec_timer">00</span>
+          </p>
         </div>
         <div class="timer-child">
           <h3>最短予測達成時間</h3>
-          <p><span id="predict_run_time"></span>秒</p>
+          <p>
+            <span id="predict_run_hour">00</span>：
+            <span id="predict_run_minute">00</span>：
+            <span id="predict_run_second">00</span>
+          </p>
         </div>
         <div class="stop-wrapper">
           <input class="run-button" type="button" value="計測終了" onclick="stop_timer()">
@@ -53,11 +61,21 @@
         </div>
         <div class="done-time done-header">
           <h3>走った時間</h3>
-          <p><span id="run_time"></span>秒</p>
+          <p>
+            <span id="run_time"></span>
+            <span id="result_run_hour">00</span>時間
+            <span id="result_run_minute">00</span>分
+            <span id="result_run_second">00</span>秒
+          </p>
         </div>
         <div class="run-calory done-header">
-          <h3>消費カロリー(目安)</h3>
+          <h3>消費カロリー(推定)</h3>
           <p><span id="burned_calory"></span>カロリー</p>
+          <ul>
+            <li><img src="" alt=""></li>
+            <li><img src="" alt=""></li>
+            <li><img src="" alt=""></li>
+          </ul>
         </div>
         <div class="close-button-parent">
           <input type="button" class="run-button" value="閉じる" onclick="close_result()">
@@ -95,8 +113,8 @@
   </footer>
   
   <script src="../static/js/jquery-3.4.1.min.js"></script>
-  <script src="../static/js/map.js"></script>
   <script src="../static/js/test.js"></script>
+  <script src="../static/js/map.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVTu0QZSYT-TfXwGMojYzIKSm_-lA9KCA&callback=initMap"></script> -->
 </body>
 </html>

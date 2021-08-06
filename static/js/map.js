@@ -142,6 +142,8 @@ function clickBtn3() {
 }
 
 let cnt = 0;
+let min = 0;
+let hour = 0;
 function count_timer() {
   $('#timer-wrapper').removeClass('hidden');
   $('#start-run').removeClass('hidden');
@@ -149,14 +151,35 @@ function count_timer() {
   cover_on()
   predict_run_time()
 
+  // Timer
   cnt = 0;
-  var timer = document.getElementById('timer');
-  timer.innerText = cnt;
+  min = 0;
+  hour = 0;
+  let run_hour = document.getElementById('hour_timer');
+  let run_minute = document.getElementById('min_timer');
+  let run_second = document.getElementById('sec_timer');
+
+  // timer初期化
+  run_hour.innerText = ('00' + hour).slice(-2) // ゼロパディング
+  run_minute.innerText = ('00' + min).slice(-2)
+  run_second.innerText = ('00' + cnt).slice(-2)
+
   id = setInterval(function() {
     cnt++;
-    timer.innerText = cnt;
+    if(cnt >= 60) {
+      min++;
+      cnt=0;
+      run_minute.innerText = ('00' + min).slice(-2);
+    }
+    if(min>=60) {
+      hour++;
+      min=0;
+      run_hour.innerText = ('00' + hour).slice(-2);
+    }
+    run_second.innerText = ('00' + cnt).slice(-2);
   }, 1000)
 }
+
 function stop_timer() {
   clearInterval(id)  
   insert_result(cnt)
@@ -186,25 +209,34 @@ function close_result() {
   $('#click-start').removeClass('hidden');
 }
 
-// 終了後画面
 // 18km/h → 5 m/s
 let max_run_speed = 5;
 function predict_run_time() {
   const number2 = document.getElementById("number2");
-  var set_distanse = document.getElementById("number2").value*1000;
-  let result = Math.floor(set_distanse/max_run_speed);
-  document.getElementById('predict_run_time').textContent = result;
+  let set_distanse = document.getElementById("number2").value*1000;
+  let run_time_second = Math.floor(set_distanse/max_run_speed);
+  let predict_run_hour = Math.floor(run_time_second/(60*60)); // 時間hour
+  run_time_second -= predict_run_hour*3600;
+  let predict_run_minute = Math.floor(run_time_second/60); // 分min
+  run_time_second -= predict_run_minute*60; // 秒sec
+
+  document.getElementById('predict_run_hour').textContent = ('00' + predict_run_hour).slice(-2);
+  document.getElementById('predict_run_minute').textContent = ('00' + predict_run_minute).slice(-2);
+  document.getElementById('predict_run_second').textContent = ('00' + run_time_second).slice(-2);
 }
 
 function insert_result(cnt) {
   let set_distance = document.getElementById('number2').value;
-  let run_time = cnt;
   let burned_calory = 0;
 
   document.getElementById('set_distance').textContent = set_distance;
-  document.getElementById('run_time').textContent = run_time;
+  document.getElementById('result_run_hour').textContent = hour;
+  document.getElementById('result_run_minute').textContent = min;
+  document.getElementById('result_run_second').textContent = cnt;
+
   document.getElementById('burned_calory').textContent = burned_calory;
 
   user_point = set_distance*10;
   test()
 }
+
