@@ -1,7 +1,11 @@
+.home-app-name {
+  display: block;
+}
 .user-description-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 60px;
 }
 .user-description-wrapper h1{
   font-size: 14px;
@@ -97,6 +101,9 @@
 }
 
 /* chart */
+.chart-wrapper {
+  margin-bottom: 60px;
+}
 .canvas-container {
   width: 100%;
   height: 100px;

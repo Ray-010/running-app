@@ -1,4 +1,5 @@
 .home-app-name {
+  display: flex;
   height: 44px;
   margin-bottom: 40px;
   text-align: center;
@@ -8,16 +9,20 @@
   background-color: rgba(30, 86, 160, 0.5);
 }
 /* icon */
-.home-app-name .fa-running {
-  margin-right: 10px;
-}
 .fa-weight, .fa-coins {
   margin-left: 10px;
 }
+/* header */
+.app-name {
+  font-size: 26px;
+  line-height: 44px;
+}
+
 
 .home-wrapper {
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 65px;
 }
 .home-intro {
   margin-bottom: 20px;
@@ -38,12 +43,14 @@
 .button-wrapper {
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   width: 100%;
   /* height: 49px; */
   bottom: 0;
   border-top: 1px solid #BDBDBD;
   border-bottom: 1px solid #BDBDBD;
+  background-color: #eaf6f6;
 }
 .button {
   width: 20%;

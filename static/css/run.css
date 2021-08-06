@@ -84,3 +84,11 @@
   margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
+
+/* 食品何個分 */
+
+.img-box {
+  display: flex;
+  width: 100;
+}
+

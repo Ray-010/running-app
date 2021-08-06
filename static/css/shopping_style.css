@@ -1,3 +1,7 @@
+.home-app-name {
+  display: block;
+}
+
 .border {
   display: flex;
   width: 100%;

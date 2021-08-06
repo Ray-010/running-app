@@ -181,8 +181,10 @@ function count_timer() {
 }
 
 function stop_timer() {
-  clearInterval(id)  
-  insert_result(cnt)
+  clearInterval(id)   // タイマーを止める
+  insert_result(cnt)  // 経過時間を挿入
+  insert_some_foods() // 画像を挿入
+  update_user_point() // DBにポイントを更新
   $('#timer-end-wrapper').removeClass('hidden');
 }
 function display_none() {
@@ -240,3 +242,19 @@ function insert_result(cnt) {
   test()
 }
 
+// insert some foods
+function insert_some_foods() {
+  let img_box = document.getElementById('img-box');
+  let img_src = '../static/images/salada_chiken.jpeg';
+  let new_element = document.createElement('img');
+  new_element.src = img_src;
+  new_element.width = 50;
+  img_box.insertAdjacentElement("beforeend", new_element)
+}
+
+// update user point
+function update_user_point() {
+  // 情報を取得
+  // 加工
+  // fetch_user_info()
+}

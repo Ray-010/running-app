@@ -12,7 +12,14 @@
   <link rel="stylesheet" href="../static/css/map.css">
 </head>
 <body>
-  <header class="home-app-name"><span class="fas fa-running"></span>走る</header>
+  <header class="home-app-name">
+    <div class="app-name-wrapper">
+      <div class='running-logo'>
+        <img src="../static/images/running_logo.png" alt="" class='running-logo'>
+      </div>
+      <h1 class="app-name">走る</h1>
+    </div>
+  </header>
   <div id="cover" class="cover hidden"></div>
   <div class="home-wrapper">
     <h3 class="home-intro">距離を設定して走ろう！</h3>
@@ -52,7 +59,7 @@
       </div>
 
       <!-- 終了後画面 -->
-      <div id="timer-end-wrapper" class="timer-wrapper hidden">
+      <div id="timer-end-wrapper" class="timer-wrapper hidden"> 
         <h2>お疲れ様でした</h2>
         <h3>今回の記録</h3>
         <div class="done-distance done-header">
@@ -71,10 +78,8 @@
         <div class="run-calory done-header">
           <h3>消費カロリー(推定)</h3>
           <p><span id="burned_calory"></span>カロリー</p>
-          <ul>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
+          <ul id="img-box" class="img-box">
+            
           </ul>
         </div>
         <div class="close-button-parent">

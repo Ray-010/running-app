@@ -10,19 +10,26 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <header class="home-app-name"><span class="fas fa-running"></span>Running Manage</header>
+  <header class="home-app-name">
+    <div class='app-name-wrapper'>
+      <div class='running-logo'>
+        <img src="../static/images/running_logo.png" alt="" class='running-logo'>
+      </div>
+      <h1 class="app-name">Running Manage</h1>
+    </div>
+  </header>
   <div class="home-wrapper">
     <h3 class="home-intro">あなたのランニングを管理する</br>Running Manageへようこそ、<span id="user_name"></span>さん</h3>
     
     <div class="user-home-detail">
       <h3>あなたの現在の体重<span class="fas fa-weight"></span></h3>
-      <p><span id="user_weight">設定してください</span> kg</p>
+      <p><span id="user_weight">・・・</span> kg</p>
       <h3>目標体重</h3>
-      <p><span id="user_goal_weight">設定してください</span> kg</p>
+      <p><span id="user_goal_weight">・・・</span> kg</p>
       <h3>所持ポイント<span class="fas fa-coins"></span></h3>
-      <p><span id="user_point">設定してください</span> pt</p>
+      <p><span id="user_point">・・・</span> pt</p>
     </div>
-    <input type="button" value="更新" onclick="get_data_again()">
+    <!-- <input type="button" value="更新" onclick="get_data_again()"> -->
   </div>
   <footer>
     <ul class="button-wrapper">
