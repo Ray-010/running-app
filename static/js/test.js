@@ -66,7 +66,7 @@ function show_user_info()
 	{
 		document.getElementById('user_name').textContent = sessionStorage.getItem("actual_name");
 		document.getElementById('user_weight').textContent = sessionStorage.getItem("body_weight");
-		document.getElementById('user_goal_weight').textContent = sessionStorage.getItem("user_name");
+		document.getElementById('user_goal_weight').textContent = sessionStorage.getItem("target_weight");
 		document.getElementById('user_point').textContent = sessionStorage.getItem("user_point");
 	});
 }

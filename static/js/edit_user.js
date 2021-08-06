@@ -5,16 +5,52 @@
 // 	document.getElementById('user_goal_weight').textContent = user_name;
 // 	document.getElementById('user_point').textContent = user_point;
 // }
+// APIを叩くための関数
 
-window.onload = show_user_info();
-
-function show_user_info()
+window.onload = function()
 {
 		document.getElementById('user_name').textContent = sessionStorage.getItem("actual_name");
 		document.getElementById('user_weight').textContent = sessionStorage.getItem("body_weight");
-		document.getElementById('user_goal_weight').textContent = sessionStorage.getItem("user_name");
+		document.getElementById('user_goal_weight').textContent = sessionStorage.getItem("target_weight");
 		document.getElementById('user_point').textContent = sessionStorage.getItem("user_point");
+};
+
+async function fetch_aws_api(api_uri, json_info)
+{
+	// HTTPリクエストの情報
+	const requestOptions = {
+		method: 'POST',
+		headers: 
+		{
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+
+		},
+		body: JSON.stringify(json_info),
+	};
+
+	const response = await fetch(api_uri, requestOptions);
+	return (response.json());
 }
+
+async function update_user_info()
+{
+	const new_user_info =
+	{
+		"OperationType": "update_user_info",
+		"Keys": {
+			"ID": sessionStorage.getItem("user_id"),
+			"UserName": sessionStorage.getItem("user_name"),
+			"Name": sessionStorage.getItem("Mori"),
+			"Point": String(sessionStorage.getItem("user_point")),
+			"Weight": String(sessionStorage.getItem("body_weight")),
+			"TargetWeight": String(sessionStorage.getItem("TargetWeight"))
+		}
+	};
+
+	await fetch_aws_api(api_uri, new_user_info);
+}
+
 
 // 編集
 function save_info() {
