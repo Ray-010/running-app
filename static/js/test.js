@@ -58,6 +58,7 @@ let snack_count;
 
 window.onload = show_user_info();
 
+
 function show_user_info()
 {
 	user_name = "Mori";
@@ -75,7 +76,7 @@ async function fetch_user_info()
 	const login_json_info =
 	{
 		"OperationType": "login",
-		"Keys": { "Name": user_name }
+		"Keys": { "Name": sessionStorage.getItem("user_name") }
 	};
 	await fetch_aws_api(api_uri, login_json_info).then
 	(data => 
@@ -100,9 +101,9 @@ async function fetch_snack_info()
 	{
 		"OperationType": "get_snack_num",
 		"Keys": {
-			"burned_calories": used_calories,
-			"Name": user_name,
-			"updated_point": user_point
+			"burned_calories": sessionStorage.getItem("used_calories"),
+			"Name": sessionStorage.getItem("user_name"),
+			"updated_point": String(sessionStorage.getItem("user_point"))
 		}
 	};
 
@@ -123,55 +124,50 @@ async function update_user_info()
 	{
 		"OperationType": "update_user_info",
 		"Keys": {
-			"ID": user_id,
-			"Name": user_name,
-			"Point": user_point,
-			"Weight": body_weight
+			"ID": sessionStorage.getItem("user_id"),
+			"Name": sessionStorage.getItem("user_name"),
+			"Point": sessionStorage.getItem("user_point"),
+			"Weight": sessionStorage.getItem("body_weight")
 		}
 	};
 
-	await fetch_aws_api(api_uri, new_user_info).then	
-	(data =>
-		{
-			// 受け取った情報を処理する（ステータスコード的な？）
-		}
-	);
+	await fetch_aws_api(api_uri, new_user_info).then;
 }
 
 
-function test()
-{
-	// fetch_user_info ユーザ情報
-	fetch_user_info().then(() => 
-	{
-		console.log("user_id       = " + user_id);
-		console.log("user_name     = " + user_name);
-		console.log("user_point    = " + user_point);
-		console.log("body_weight   = " + body_weight);
-	});
+// function test()
+// {
+// 	// fetch_user_info ユーザ情報
+// 	fetch_user_info().then(() => 
+// 	{
+// 		console.log("user_id       = " + user_id);
+// 		console.log("user_name     = " + user_name);
+// 		console.log("user_point    = " + user_point);
+// 		console.log("body_weight   = " + body_weight);
+// 	});
 
-	// fetch_snack_info スナック情報＆ポイント
-	fetch_snack_info().then(() => 
-	{
-		console.log("snack_id      = " + snack_id);
-		console.log("snack_name    = " + snack_name);
-		console.log("snack_calory  = " + snack_calory);
-		console.log("used_calories = " + used_calories);
-		console.log("snack_count   = " + snack_count);
-		console.log("user_point    = " + user_point);
-	});
+// 	// fetch_snack_info スナック情報＆ポイント
+// 	fetch_snack_info().then(() => 
+// 	{
+// 		console.log("snack_id      = " + snack_id);
+// 		console.log("snack_name    = " + snack_name);
+// 		console.log("snack_calory  = " + snack_calory);
+// 		console.log("used_calories = " + used_calories);
+// 		console.log("snack_count   = " + snack_count);
+// 		console.log("user_point    = " + user_point);
+// 	});
 
-	// fetch_user_info ユーザ情報
-	console.log("user_id       = " + user_id);
-	console.log("user_name     = " + user_name);
-	console.log("user_point    = " + user_point);
-	console.log("body_weight   = " + body_weight);
+// 	// fetch_user_info ユーザ情報
+// 	console.log("user_id       = " + user_id);
+// 	console.log("user_name     = " + user_name);
+// 	console.log("user_point    = " + user_point);
+// 	console.log("body_weight   = " + body_weight);
 
-	// fetch_snack_info スナック情報＆ポイント
-	console.log("snack_id      = " + snack_id);
-	console.log("snack_name    = " + snack_name);
-	console.log("snack_calory  = " + snack_calory);
-	console.log("used_calories = " + used_calories);
-	console.log("snack_count   = " + snack_count);
-	console.log("user_point    = " + user_point);
-}
+// 	// fetch_snack_info スナック情報＆ポイント
+// 	console.log("snack_id      = " + snack_id);
+// 	console.log("snack_name    = " + snack_name);
+// 	console.log("snack_calory  = " + snack_calory);
+// 	console.log("used_calories = " + used_calories);
+// 	console.log("snack_count   = " + snack_count);
+// 	console.log("user_point    = " + user_point);
+// }
