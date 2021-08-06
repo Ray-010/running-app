@@ -113,6 +113,28 @@ async function fetch_snack_info()
 	);
 }
 
+async function update_user_info()
+{
+	const new_user_info =
+	{
+		"OperationType": "update_user_info",
+		"Keys": {
+			"ID": user_id,
+			"Name": user_name,
+			"Point": user_point,
+			"Weight": body_weight
+		}
+	};
+
+	await fetch_aws_api(api_uri, new_user_info).then	
+	(data =>
+		{
+			// 受け取った情報を処理する（ステータスコード的な？）
+		}
+	);
+}
+
+
 function test()
 {
 	// fetch_user_info ユーザ情報
