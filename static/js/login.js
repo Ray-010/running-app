@@ -28,6 +28,10 @@ async function fetch_user_info()
 			user_name = data.body["Items"][0].Name;
 			body_weight = data.body["Items"][0].Weight;
 			user_point = data.body["Items"][0].Point;
+			sessionStorage.setItem("user_id", data.body["Items"][0].ID);
+			sessionStorage.setItem("user_name", data.body["Items"][0].Name;
+			sessionStorage.setItem("body_weight", data.body["Items"][0].Weight;
+			sessionStorage.setItem("user_point", data.body["Items"][0].Point;
 		}
 	);
 }
