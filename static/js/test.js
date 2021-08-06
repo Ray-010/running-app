@@ -5,9 +5,9 @@ function calculate_used_calories(body_weight, distance)
 	return (body_weight * distance);
 }
 
-function calculate_new_points(used_calories, point_rate)
+function calculate_new_points(user_point, used_calories, point_rate)
 {
-	return (used_calories * point_rate);
+	return (user_point + used_calories * point_rate);
 }
 
 function calculate_snack_count(used_calories, snack_calory)
@@ -91,7 +91,7 @@ async function fetch_user_info()
 async function fetch_snack_info()
 {
 	used_calories = calculate_used_calories(body_weight, distance);
-	user_point = calculate_new_points(used_calories, point_rate);
+	user_point = calculate_new_points(user_point, used_calories, point_rate);
 	const snack_json_info =
 	{
 		"OperationType": "get_snack_num",
@@ -133,7 +133,6 @@ async function update_user_info()
 		}
 	);
 }
-
 
 function test()
 {
