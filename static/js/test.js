@@ -63,10 +63,10 @@ function show_user_info()
 	user_name = "Mori";
 	fetch_user_info().then(() =>
 	{
-		document.getElementById('user_name').textContent = user_name;
-		document.getElementById('user_weight').textContent = body_weight;
-		document.getElementById('user_goal_weight').textContent = user_name;
-		document.getElementById('user_point').textContent = user_point;
+		document.getElementById('user_name').textContent = sessionStorage.getItem("user_name");
+		document.getElementById('user_weight').textContent = sessionStorage.getItem("body_weight");
+		document.getElementById('user_goal_weight').textContent = sessionStorage.getItem("user_name");
+		document.getElementById('user_point').textContent = sessionStorage.getItem("user_point");
 	});
 }
 
@@ -80,10 +80,14 @@ async function fetch_user_info()
 	await fetch_aws_api(api_uri, login_json_info).then
 	(data => 
 		{
-			user_id = data.body["Items"][0].ID;
-			user_name = data.body["Items"][0].Name;
-			body_weight = data.body["Items"][0].Weight;
-			user_point = data.body["Items"][0].Point;
+			// user_id = data.body["Items"][0].ID;
+			// user_name = data.body["Items"][0].Name;
+			// body_weight = data.body["Items"][0].Weight;
+			// user_point = data.body["Items"][0].Point;
+			sessionStorage.setItem("user_id", data.body["Items"][0].ID);
+			sessionStorage.setItem("user_name", data.body["Items"][0].Name);
+			sessionStorage.setItem("body_weight", data.body["Items"][0].Weight);
+			sessionStorage.setItem("user_point", data.body["Items"][0].Point);
 		}
 	);
 }
@@ -105,10 +109,10 @@ async function fetch_snack_info()
 	await fetch_aws_api(api_uri, snack_json_info).then	
 	(data =>
 		{
-			snack_id = data.body["Item"].ID;
-			snack_calory = data.body["Item"].Calory;
-			snack_name = data.body["Item"].Name;	
-			snack_count = calculate_snack_count(used_calories, snack_calory);
+			sessionStorage.setItem("snack_id", data.body["Item"].ID);
+			sessionStorage.setItem("snack_calory", data.body["Item"].Calory);
+			sessionStorage.setItem("snack_name", data.body["Item"].Name);
+			sessionStorage.setItem("snack_count", calculate_snack_count(used_calories, snack_calory));
 		}
 	);
 }
@@ -133,6 +137,7 @@ async function update_user_info()
 		}
 	);
 }
+
 
 function test()
 {
