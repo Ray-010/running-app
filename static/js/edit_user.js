@@ -18,9 +18,14 @@ function show_user_info()
 
 // 編集
 function save_info() {
-  sessionStorage.setItem("user_name", document.getElementById('new_user_name'));
-  sessionStorage.setItem("body_weight", document.getElementById('new_body_weight'));
-  sessionStorage.setItem("target_weight", document.getElementById("new_goal_weight"));
+  if (document.getElementById('new_user_name').value != "")
+    sessionStorage.setItem("user_name", document.getElementById('new_user_name').value);
+  if (document.getElementById('new_body_weight').value != "")
+    sessionStorage.setItem("body_weight", document.getElementById('new_body_weight').value);
+  if (document.getElementById('new_goal_weight').value != "")
+    sessionStorage.setItem("target_weight", document.getElementById("new_goal_weight").value);
+  show_user_info();
+  update_user_info();
 }
 
 // 編集画面を閉じる
